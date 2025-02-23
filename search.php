@@ -9,7 +9,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
 
-    $conn = new mysqli("localhost", "root", "", "test");
+    $conn = new mysqli("localhost", "root", "", "testdb");
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);

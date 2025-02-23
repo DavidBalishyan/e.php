@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
+        echo "User registered successfully";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -22,4 +22,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
     echo "Invalid request method.";
 }
-?>

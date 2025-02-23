@@ -77,13 +77,13 @@ echo isPalindrome("racecar") ? "racecar is a palindrome" : "racecar is not a pal
 // 12. Ստեղծեք աղյուսակ users անունով (id, name, email, password)։ --- sarqeci heto ????
 
 // 13. Գրեք PHP կոդ, որը կապ է հաստատում MySQL տվյալների բազայի հետ: ????
-$conn = new mysqli("localhost", "root", "", "test");
+$conn = new mysqli("localhost", "root", "", "testdb");
 
 // 14. Գրեք SQL հարցում, որը ներմուծում է տվյալներ աղյուսակում։
 $sql = "INSERT INTO users (name, email, password) VALUES ('test', 'test', '123456')";
 
 // 15. Գրեք PHP կոդ, որը բերում է բոլոր օգտատերերին տվյալների բազայից։ ???
-$conn = new mysqli("localhost", "root", "", "test");
+$conn = new mysqli("localhost", "root", "", "testdb");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -110,7 +110,7 @@ $sql = "DELETE FROM users WHERE id = 1";
 // 18. Ստեղծեք որոնման ձև, որը գտնում է օգտատերերին ըստ անվան։ search.php ???
 
 // 19. Ստեղծեք համակարգ, որը հաշվում է աղյուսակի բոլոր գրառումները։
-$conn = new mysqli("localhost", "root", "", "test");
+$conn = new mysqli("localhost", "root", "", "testdb");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -130,7 +130,7 @@ $conn->close();
 
 // 20. Գրեք կոդ, որը կարգաբերում է տվյալները ըստ անվան։
 
-$conn = new mysqli("localhost", "root", "", "test");
+$conn = new mysqli("localhost", "root", "", "testdb");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -161,3 +161,31 @@ $conn->close();
 
 // 26. Ստեղծեք JavaScript ֆայլ, որը fetch-ի միջոցով ստանում է տվյալներ և արտածում դրանք HTML-ում։ e26.php
  
+// 27. Գրեք ծրագիր, որը ջնջում է տվյալներ fetch-ով և MySQLi-ով։ e27.php
+
+// 28. Ստեղծեք օգտվողների գրանցման ձև fetch-ով։ e28.php
+
+// 29. Ստեղծեք օգտվողի մուտք գործելու համակարգ fetch-ով։ e29.php
+
+// 30. Գրեք ծրագիր, որը հաշվարկում է օգտվողների ընդհանուր քանակը և արտածում առանց էջը թարմացնելու։ e30.php
+
+// 31. Ստեղծեք session համակարգ, որը պահպանում է օգտվողի տվյալները։ --TODO
+
+// 32. Գրեք ծրագիր, որը ստուգում է, արդյոք տվյալ էլ․ հասցեն արդեն գրանցված է։ --TODO
+
+// 33. Գրեք ֆունկցիա, որը կոդավորում է գաղտնաբառը (hash)։
+
+// md5 hashing
+function hash_pass_md5($pass): string {
+    $res = md5($pass);
+    return $res;
+}
+
+// password_hash fn
+function hash_pass($pass): string {
+    $res = password_hash($pass, PASSWORD_BCRYPT);
+    return $res;
+}
+
+echo hash_pass("pass");
+

@@ -1,6 +1,5 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -10,16 +9,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')";
+    $sql = "SELECT * FROM users WHERE email = ? AND password = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $email, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
+    if ($result->num_rows > 0) {
+        echo "Login successful";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Invalid email or password";
     }
 
+    $stmt->close();
     $conn->close();
 } else {
     echo "Invalid request method.";
 }
-?>
