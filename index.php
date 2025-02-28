@@ -401,3 +401,106 @@
 //     echo "0 results";
 // }
 
+// // 57. Գրեք class, որը պահպանում է տվյալները session-ի մեջ։
+// session_start();
+
+// class SessionManager {
+//     // Set a session variable
+//     public function set($key, $value) {
+//         $_SESSION[$key] = $value;
+//     }
+
+//     // Get a session variable
+//     public function get($key) {
+//         return isset($_SESSION[$key]) ? $_SESSION[$key] : null;
+//     }
+
+//     // Check if a session variable is set
+//     public function has($key) {
+//         return isset($_SESSION[$key]);
+//     }
+
+//     // Remove a session variable
+//     public function remove($key) {
+//         if (isset($_SESSION[$key])) {
+//             unset($_SESSION[$key]);
+//         }
+//     }
+
+//     // Destroy the session
+//     public function destroy() {
+//         session_destroy();
+//     }
+// }
+
+// $session = new SessionManager();
+// $session->set('username', 'David');
+// echo $session->get('username'); 
+// $session->remove('username');
+// $session->destroy();
+
+// // 58. Ստեղծեք class, որը JSON ֆայլից կարդում է տվյալներ։
+// class JsonReader {
+//     private $filePath;
+
+//     public function __construct($filePath) {
+//         $this->filePath = $filePath;
+//     }
+
+//     public function read() {
+//         if (!file_exists($this->filePath)) {
+//             throw new Exception("File not found: " . $this->filePath);
+//         }
+
+//         $jsonData = file_get_contents($this->filePath);
+//         return json_decode($jsonData, true);
+//     }
+// }
+
+
+// try {
+//     $jsonReader = new JsonReader('data.json');
+//     $data = $jsonReader->read();
+//     print_r($data);
+// } catch (Exception $e) {
+//     echo 'Error: ' . $e->getMessage();
+// }
+
+// // 59. Գրեք class, որը աշխատում է ֆայլերի հետ (բացում, գրառում, փակումը)։
+// class FileManager {
+//     private $fileHandle;
+//     // Open a file
+//     public function open($filePath, $mode) {
+//         $this->fileHandle = fopen($filePath, $mode);
+//         if (!$this->fileHandle) {
+//             throw new Exception("Could not open the file!");
+//         }
+//     }
+
+//     // Write to a file
+//     public function write($data) {
+//         if (fwrite($this->fileHandle, $data) === false) {
+//             throw new Exception("Could not write to the file!");
+//         }
+//     }
+
+//     // Close the file
+//     public function close() {
+//         if ($this->fileHandle) {
+//             fclose($this->fileHandle);
+//         }
+//     }
+// }
+
+
+// try {
+//     $fileManager = new FileManager();
+//     $fileManager->open('example.txt', 'w');
+//     $fileManager->write("Hello, World!");
+//     $fileManager->close();
+//     echo "File written successfully.";
+// } catch (Exception $e) {
+//     echo 'Error: ' . $e->getMessage();
+// }
+
+// 60. Ստեղծեք class, որը թույլ է տալիս բեռնել և պահել նկարներ։
